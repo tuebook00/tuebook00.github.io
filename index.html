@@ -1114,16 +1114,15 @@ src="https://www.facebook.com/tr?id=2154531348693787&ev=PageView&noscript=1"
     });
   });
 
-  // Meta Pixel — InitiateCheckout + Purchase en todos los botones de compra
-  document.querySelectorAll('a[href="#LINK-DE-PAGO"]').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      var href = this.getAttribute('href');
-      fbq('track', 'InitiateCheckout', { value: 2.99, currency: 'USD' });
-      fbq('track', 'Purchase', { value: 2.99, currency: 'USD' });
-      setTimeout(function() { window.location.href = href; }, 300);
-    });
+// Meta Pixel — InitiateCheckout en todos los botones de compra
+document.querySelectorAll('a[href="#LINK-DE-PAGO"]').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var href = this.getAttribute('href');
+    fbq('track', 'InitiateCheckout', { value: 2.99, currency: 'USD' });
+    setTimeout(function() { window.location.href = href; }, 300);
   });
+});
 </script>
 </body>
 </html>
